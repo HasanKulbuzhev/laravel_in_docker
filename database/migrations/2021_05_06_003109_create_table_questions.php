@@ -14,11 +14,11 @@ class CreateTableQuestions extends Migration
     public function up()
     {
         Schema::create('table_questions', function (Blueprint $table) {
-            $table->uuid('uuid');
+            $table->uuid('uuid')->primary();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->jsonb('data');
-            $table->text('title');
+            $table->jsonb('data')->default('{ "title" : ""}');
+            $table->text('title')->generatedAs('regexp_replace(data::json->"title", E"<[^>]+>", "", "gi")');
             $table->timestampTz('created_at');
         });
     }

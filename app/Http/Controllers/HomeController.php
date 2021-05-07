@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Ui\UiServiceProvider;
 
 class HomeController extends Controller
 {
@@ -24,8 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //dd(Auth::user());
-        phpinfo();
+        $questions = Auth::user()->get_questions_by_id_user(1);//Я решил создать отдельный метод в модели,потому что ...
+        //просто потому что.Так лучше.
+        dd($questions);
+
         //return view('home');
     }
 }

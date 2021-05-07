@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,14 @@ class User extends Authenticatable
     public function questions()
     {
         return $this->hasMany(Question::class);
+    }
+
+    public function get_questions_by_id_user($user_id)
+    {
+        $user = Auth::user();
+        if (($user->is_admin == 1) or ($user->id == $user_id)){
+            return Question::all()->where('user_id', $user_id);
+        }
+        return null;
     }
 }

@@ -20,7 +20,8 @@ class QuestionsTableSeeder extends Seeder
         #DB::table('questions')->delete();
         DB::table('questions')->insert([
             [ 'uuid'=> Str::uuid(),'user_id' => 1, 'data' => '{ "title" : "test_value", "test2" : "test_value2" }', 'created_at' => now() ],
-            [ 'uuid'=> Str::uuid(),'user_id' => 1, 'data' => '{ "test" : "test_value", "title" : "test_value2" }', 'created_at' => now()  ],
+            [ 'uuid'=> Str::uuid(),'user_id' => 2, 'data' => '{ "test" : "test_value", "title" : "test_value2" }', 'created_at' => now()  ],
+            [ 'uuid'=> Str::uuid(),'user_id' => 1, 'data' => '{ "test" : "shaurma", "title" : "deadpool" }', 'created_at' => now()  ],
         ]);
     }
 }

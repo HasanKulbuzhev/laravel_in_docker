@@ -2,6 +2,8 @@ version: "3.1"
 networks:
   docker-network:
 services:
+  #nginx я добавил для себя,чтобы проверить работоспособность конфигурации.
+  #adminer тоже
   nginx:
     image:
       nginx
@@ -31,7 +33,6 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - ./sourcefile/data:/var/lib/postgresql/data
-      #- ./sourcefile/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
       - 5432:5432
     networks:

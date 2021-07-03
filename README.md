@@ -1,3 +1,48 @@
+## Развернуть Laravel.
+ Вводим 
+```bash 
+composer create-project laravel/laravel Anastasia --prefer-dist
+composer create-project laravel/laravel Project_name --prefer-dist
+```
+И вуаля у нас создаётся проект с замечательным именем.
+И вуаля у нас создаётся проект.
 
-Это тестовое задание, которое я писал для компании UKit на позицию Backend Web Developer.Ссылка не полное задание : https://docs.google.com/document/d/1vGuQIo2z9APag5zr_iRQq-n34-C8eDlXNnnv-X2tjto/edit
+##    2. Добавить docker-compose.yml Позволяющий поднять все необходимые контейнеры для работы проекта одной командой.
+##     Добавить docker-compose.yml Позволяющий поднять все необходимые контейнеры для работы проекта одной командой.
+a. PHP 7.4 </br>
+b. СУБД - PostgreSQL 12 </br>
+
+- см. мой docker-composer.yml
+- см. мой docker-composer.yml , данные бд лежат там же.
+вводим 
+-      docker-compose up 
+
+
+##     3. Создать таблицу users с пользователями (набор полей произвольный). 
+##      Создать таблицу users с пользователями (набор полей произвольный). 
+  -таблица уже есть по умолчанию ,но если создавать,то можно создать артисаном:
+-      php artisan make:migration create_user_table
+а если с моделью , то 
+-      php artisan make:model -m User
+
+##     4.Должны работать регистрация и аутентификация (можно взять стандартные).
+##     Должны работать регистрация и аутентификация (можно взять стандартные).
+-Заходим в наш докер
+-      docker-compose exec docker-php-fpm /bin/bash
+И вводим
+-      composer require laravel/ui
+-      php artisan ui bootstrap --auth
+ ну или вместо bootstrap можно vue использовать.На выбор.
+
+##     5.Нужна возможность назначить пользователя админом (можно просто редактированием записи в БД).
+ просто добавляем в таблицу users поле is_admin.Я добавил его изначально
+##      возможность назначить пользователя админом (можно просто редактированием записи в БД).
+ просто добавляем в таблицу users поле is_admin.
+
+##     6.Добавить таблицу questions (uuid uuid, user_id int, data jsonb, title text, created_at timestamptz). ...
+Добавил. см. в файлах миграции.
+
+##     7.Заполнить тестовыми данными таблицу с помощью миграции
+Реализовал сидерами
+
 
